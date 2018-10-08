@@ -26,6 +26,7 @@ class Application
 
     elsif req.path.match(/add/)
       # add_term = req.params["q"]
+      # resp.write handle_search(add_term)
       desired_item = req.params["item"]
       if @@items.include?(desired_item)
         @@cart << desired_item
@@ -33,6 +34,9 @@ class Application
       else
         resp.write "We don't have that item"
       end
+      # Why does this elsif handle its own output while the
+      # output for handle_search needs to be handled below in
+      # its very own method?
 
     else
       resp.write "Path Not Found"
